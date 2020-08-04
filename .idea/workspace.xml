@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54ad4f4a-6181-4a7f-b9f3-3a44b6d5626b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/javascript.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +36,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Linters.JSHint" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -57,6 +51,8 @@
       <workItem from="1596477771775" duration="37000" />
       <workItem from="1596477888637" duration="8000" />
       <workItem from="1596477914019" duration="1562000" />
+      <workItem from="1596560741642" duration="53000" />
+      <workItem from="1596560815584" duration="21000" />
     </task>
     <servers />
   </component>
@@ -64,14 +60,18 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="303" width="494" height="324" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1596478699767">
+    <state x="549" y="303" width="494" height="324" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1596560793659">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state x="549" y="303" width="494" height="324" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.25.1600.875@0.25.1600.875" timestamp="1596478699767" />
-    <state x="304" y="100" width="992" height="731" key="SettingsEditor" timestamp="1596478650541">
+    <state x="549" y="303" width="494" height="324" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.25.1600.875@0.25.1600.875" timestamp="1596560793659" />
+    <state x="583" y="209" width="426" height="513" key="FileChooserDialogImpl" timestamp="1596560790800">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state x="304" y="100" width="992" height="731" key="SettingsEditor/0.25.1600.875@0.25.1600.875" timestamp="1596478650541" />
+    <state x="583" y="209" width="426" height="513" key="FileChooserDialogImpl/0.25.1600.875@0.25.1600.875" timestamp="1596560790800" />
+    <state x="304" y="100" width="992" height="731" key="SettingsEditor" timestamp="1596560837066">
+      <screen x="0" y="25" width="1600" height="875" />
+    </state>
+    <state x="304" y="100" width="992" height="731" key="SettingsEditor/0.25.1600.875@0.25.1600.875" timestamp="1596560837066" />
     <state x="463" y="214" width="672" height="678" key="search.everywhere.popup" timestamp="1596477928334">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
