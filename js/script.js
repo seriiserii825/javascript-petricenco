@@ -9,12 +9,16 @@ const personalMovieDB = {
 	private: false
 };
 
-let a = prompt('Один из поледних просмотренных фильмов?', '');
-let b = prompt('На сколько вы его оцените?', '');
-let c = prompt('Один из поледних просмотренных фильмов?', '');
-let d = prompt('На сколько вы его оцените?', '');
+for (let i = 0; i < 2; i++) {
+	let a = prompt('Один из поледних просмотренных фильмов?', '');
+	let b = prompt('На сколько вы его оцените?', '');
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+	if (a !== null && b !== null && a !== '' && b !== '' && a.length < 50) {
+		personalMovieDB.movies[a] = b;
+	}else{
+		i--;
+	}
+
+}
 
 console.log(personalMovieDB);
