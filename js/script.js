@@ -1,3 +1,6 @@
 "use strict";
-const some = 5;
-let myVar = some;
+
+const isChecked = true,
+	isClosed = false;
+
+console.log(isChecked && isClosed);
