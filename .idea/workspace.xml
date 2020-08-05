@@ -44,7 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bs-bertan" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -79,7 +79,8 @@
       <workItem from="1596477914019" duration="1562000" />
       <workItem from="1596545860210" duration="135000" />
       <workItem from="1596546046960" duration="678000" />
-      <workItem from="1596548486461" duration="4603000" />
+      <workItem from="1596548486461" duration="4625000" />
+      <workItem from="1596609713441" duration="19000" />
     </task>
     <servers />
   </component>
@@ -96,6 +97,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="549" y="303" width="494" height="324" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1596478699767">
@@ -106,6 +108,10 @@
       <screen x="1920" y="0" width="1920" height="1200" />
     </state>
     <state x="2019" y="100" width="1722" height="1005" key="DiffContextDialog/0.25.1680.1025/1920.0.1920.1200@1920.0.1920.1200" timestamp="1596554596801" />
+    <state x="623" y="298" width="426" height="485" key="FileChooserDialogImpl" timestamp="1596609730973">
+      <screen x="0" y="25" width="1680" height="1025" />
+    </state>
+    <state x="623" y="298" width="426" height="485" key="FileChooserDialogImpl/0.25.1680.1025/1920.0.1920.1200@0.25.1680.1025" timestamp="1596609730973" />
     <state x="2285" y="103" width="992" height="731" key="SettingsEditor" timestamp="1596549568512">
       <screen x="1920" y="0" width="1920" height="1200" />
     </state>
