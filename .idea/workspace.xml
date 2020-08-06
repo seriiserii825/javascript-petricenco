@@ -32,12 +32,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1fb8Tx4yJ9uvKuD4BIXrXTKvzfZ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -99,6 +103,9 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="549" y="303" width="494" height="324" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1596560793659">
       <screen x="0" y="25" width="1600" height="875" />
@@ -117,11 +124,10 @@
     </state>
     <state x="304" y="100" width="992" height="731" key="SettingsEditor/0.25.1600.875@0.25.1600.875" timestamp="1596478650541" />
     <state x="2285" y="103" width="992" height="731" key="SettingsEditor/0.25.1680.1025/1920.0.1920.1200@1920.0.1920.1200" timestamp="1596549568512" />
-    <state x="2476" y="259" width="807" height="930" key="search.everywhere.popup" timestamp="1596550394116">
-      <screen x="1920" y="0" width="1920" height="1200" />
-      &gt;&gt;&gt;&gt;&gt;&gt;&gt; 79c4298870402bcd45a5516642a47e79eb3028e5
+    <state x="463" y="214" width="672" height="678" key="search.everywhere.popup" timestamp="1596648807565">
+      <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state x="463" y="214" width="672" height="678" key="search.everywhere.popup/0.25.1600.875@0.25.1600.875" timestamp="1596477928334" />
+    <state x="463" y="214" width="672" height="678" key="search.everywhere.popup/0.25.1600.875@0.25.1600.875" timestamp="1596648807565" />
     <state x="2476" y="259" width="807" height="930" key="search.everywhere.popup/0.25.1680.1025/1920.0.1920.1200@1920.0.1920.1200" timestamp="1596550394116" />
   </component>
 </project>
