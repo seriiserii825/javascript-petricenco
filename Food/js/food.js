@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 
-	}
+	};
 	tabs();
 
 	let timer = function () {
@@ -129,12 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 	openModal();
 	// }, 5000);
 
-	function showModalByScroll() {
-		if (window.pageYOffset + document.documentElement.clientHeight === document.documentElement.scrollHeight) {
-			openModal();
-			window.removeEventListener('scroll', showModalByScroll);
-		}
-	}
+	// function showModalByScroll() {
+	// 	if (window.pageYOffset + document.documentElement.clientHeight === document.documentElement.scrollHeight) {
+	// 		openModal();
+	// 		window.removeEventListener('scroll', showModalByScroll);
+	// 	}
+	// }
 
 	// window.addEventListener('scroll', showModalByScroll);
 
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			this.alt = alt;
 			this.exchange();
 			this.parrent = document.querySelector(parrent);
-			this.classes = classes
+			this.classes = classes;
 		}
 
 		exchange() {
