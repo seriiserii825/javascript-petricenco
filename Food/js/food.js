@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			btn.addEventListener('click', openModal);
 		}));
 
-		function openModal(){
+		function openModal() {
 			modal.classList.add('show');
 			document.body.style.overflow = 'hidden';
 			clearInterval(modalTimeOutId);
@@ -138,9 +138,71 @@ document.addEventListener('DOMContentLoaded', () => {
 				window.removeEventListener('scroll', showModalByScroll);
 			}
 		}
+
 		window.addEventListener('scroll', showModalByScroll);
 	};
+	// modal();
 
+	class Card {
+		constructor(title, imgPath, alt, content, price, parrent) {
+			this.title = title;
+			this.imgPath = imgPath;
+			this.content = content;
+			this.price = price;
+			this.priceConvertor = 27;
+			this.alt = alt;
+			this.exchange();
+			this.parrent = parrent;
+		}
 
-	modal();
+		exchange(){
+			this.price = this.price * this.priceConvertor;
+		}
+
+		render(){
+			const div = document.createElement('div');
+			div.innerHTML = `
+			
+			`;
+		}
+	}
+
+	const cards = [
+		{
+			title: 'Меню "Фитнес"',
+			imgPath: "img/tabs/vegy.jpg",
+			content: 'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+			price: 229
+		},
+		{
+			title: 'Меню “Премиум”',
+			imgPath: "img/tabs/elite.jpg",
+			content: 'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+			price: 550
+		},
+		{
+			title: 'Меню "Постное"',
+			imgPath: "img/tabs/post.jpg",
+			content: 'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
+			price: 430
+		},
+	];
+
+	const menuContainer = document.querySelector('.menu__field .container');
+	let html = '';
+	for (let card of cards) {
+		const cardObject = new Card(card.title, card.imgPath, card.content, card.price);
+
+		html += '<div class="menu__item">';
+		html += `<img src="${cardObject.imgPath}" alt="vegy">`;
+		html += `<h3 class="menu__item-subtitle">${cardObject.title}</h3>`;
+		html += `<div class="menu__item-descr">${cardObject.content}</div>`;
+		html += `<div class="menu__item-divider"></div>`;
+		html += `<div class="menu__item-price">`;
+		html += `<div class="menu__item-cost">Цена:</div>`;
+		html += `<div class="menu__item-total"><span>${cardObject.price}</span> грн/день</div>`;
+		html += `</div>`;
+		html += '</div>';
+	}
+	menuContainer.innerHTML = html;
 });
