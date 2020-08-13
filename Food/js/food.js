@@ -254,6 +254,51 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	// function postData(form) {
+	// 	form.addEventListener('submit', function (e) {
+	// 		e.preventDefault();
+	//
+	//
+	// 		const statusMessage = document.createElement('div');
+	// 		statusMessage.classList.add('status');
+	// 		statusMessage.textContent = message.loading;
+	// 		form.append(statusMessage);
+	//
+	// 		const formData = new FormData(form);
+	//
+	// 		fetch('server.php', {
+	// 			method: "POST",
+	// 			// headers: {
+	// 			// 	'Content-type': 'application/json'
+	// 			// },
+	// 			body: {
+	// 				formData
+	// 			}
+	// 		}).then((data) => {
+	// 			return data.text();
+	// 		}).then((data) => {
+	// 			showThanksModal(message.success);
+	// 		}).catch(() => {
+	// 			showThanksModal(message.failure);
+	// 		}).finally(() => {
+	// 			form.reset();
+	// 		});
+	//
+	// 		// request.addEventListener('load', function () {
+	// 		// 	if (request.status === 200) {
+	// 		// 		showThanksModal(message.success);
+	// 		// 		form.reset();
+	// 		// 	} else {
+	// 		// 		showThanksModal(message.failure);
+	// 		// 	}
+	// 		//
+	// 		// 	setTimeout(() => {
+	// 		// 		statusMessage.remove();
+	// 		// 	}, 2000);
+	// 		// });
+	// 	});
+	// }
+
 	forms.forEach(function (item) {
 		postData(item);
 	});
