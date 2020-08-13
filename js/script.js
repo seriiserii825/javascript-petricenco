@@ -1,8 +1,9 @@
 "use strict";
 
-const person = {
-	name: "John",
-	age: 13
-};
+const firstInput = document.querySelector('.first-input');
+const secondInput = document.querySelector('.second-input');
 
-console.log(JSON.parse(JSON.stringify(person)));
+firstInput.addEventListener('input', function (e) {
+	const thisValue = e.target.value;
+	secondInput.value = thisValue;
+});
