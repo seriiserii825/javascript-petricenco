@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		function openModal() {
 			modal.classList.add('show');
 			document.body.style.overflow = 'hidden';
-			clearInterval(modalTimeOutId);
+			// clearInterval(modalTimeOutId);
 		}
 
 		function closeModal() {
@@ -128,9 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 
-		let modalTimeOutId = setTimeout(function () {
-			openModal();
-		}, 5000);
+		// let modalTimeOutId = setTimeout(function () {
+		// 	openModal();
+		// }, 5000);
 
 		function showModalByScroll() {
 			if (window.pageYOffset + document.documentElement.clientHeight === document.documentElement.scrollHeight) {
@@ -139,13 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		}
 
-		window.addEventListener('scroll', showModalByScroll);
+		// window.addEventListener('scroll', showModalByScroll);
 	};
-
-	// modal();
+	modal();
 
 	class Card {
-		constructor(title, imgPath, alt, content, price, parrent) {
+		constructor(title, imgPath, alt, content, price, parrent, ...classes) {
 			this.title = title;
 			this.imgPath = imgPath;
 			this.content = content;
@@ -154,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			this.alt = alt;
 			this.exchange();
 			this.parrent = document.querySelector(parrent);
+			this.classes = classes
 		}
 
 		exchange() {
@@ -162,16 +162,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		render() {
 			const div = document.createElement('div');
+			if (this.classes.length === 0) {
+				this.classes = 'menu__item';
+				div.classList.add(this.classes);
+			} else {
+				this.classes.forEach(className => div.classList.add(className));
+			}
 			div.innerHTML = `
-				<div class="menu__item">
-					<img src="${this.imgPath}" alt="vegy">
-					<h3 class="menu__item-subtitle">${this.title}</h3>
-					<div class="menu__item-descr">${this.content}</div>
-					<div class="menu__item-divider"></div>
-					<div class="menu__item-price">
-						<div class="menu__item-cost">Цена:</div>
-						<div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-					</div>
+				<img src="${this.imgPath}" alt="vegy">
+				<h3 class="menu__item-subtitle">${this.title}</h3>
+				<div class="menu__item-descr">${this.content}</div>
+				<div class="menu__item-divider"></div>
+				<div class="menu__item-price">
+					<div class="menu__item-cost">Цена:</div>
+					<div class="menu__item-total"><span>${this.price}</span> грн/день</div>
 				</div>
 			`;
 
@@ -205,4 +209,58 @@ document.addEventListener('DOMContentLoaded', () => {
 		7,
 		'.menu__field .container'
 	).render();
+
+	const forms = document.querySelectorAll('form');
+
+	const message = {
+		loading: "Загрузка",
+		success: "Спасибо, скоро мы с вами свяжимся",
+		failure: "Что-то пошло не так"
+	};
+
+	function postData(form){
+		form.addEventListener('submit', function (e){
+			e.preventDefault();
+
+			const request = new XMLHttpRequest();
+			request.open('POST', 'server.php');
+
+			const statusMessage = document.createElement('div');
+			statusMessage.classList.add('status');
+			statusMessage.textContent = message.loading;
+			form.append(statusMessage);
+
+			request.setRequestHeader('Content-type', 'application/json');
+
+			const formData = new FormData(form);
+
+			const object = {};
+
+			formData.forEach(function(value, key) {
+				object[key] = value;
+			});
+
+			const json = JSON.stringify(object);
+
+			request.send(json);
+
+			request.addEventListener('load', function (){
+				if(request.status === 200){
+					statusMessage.textContent = message.success;
+					console.log(request.response);
+					form.reset();
+				}else{
+					statusMessage.textContent = message.failure;
+				}
+
+				setTimeout(() => {
+					statusMessage.remove();
+				}, 2000);
+			});
+		});
+	}
+
+	forms.forEach(function (item) {
+		postData(item);
+	});
 });
