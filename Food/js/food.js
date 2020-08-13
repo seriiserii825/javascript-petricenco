@@ -94,54 +94,49 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 	timer();
 
-	let modal = function () {
-		const modal = document.querySelector('.modal');
-		const modalOpenBtn = document.querySelectorAll('[data-modal-open]');
-		const modalCloseBtn = document.querySelector('.modal__close');
+	const modal = document.querySelector('.modal');
+	const modalOpenBtn = document.querySelectorAll('[data-modal-open]');
 
-		modalOpenBtn.forEach((btn => {
-			btn.addEventListener('click', openModal);
-		}));
+	modalOpenBtn.forEach((btn => {
+		btn.addEventListener('click', openModal);
+	}));
 
-		function openModal() {
-			modal.classList.add('show');
-			document.body.style.overflow = 'hidden';
-			// clearInterval(modalTimeOutId);
+	function openModal() {
+		modal.classList.add('show');
+		document.body.style.overflow = 'hidden';
+		// clearInterval(modalTimeOutId);
+	}
+
+	function closeModal() {
+		modal.classList.remove('show');
+		document.body.style.overflow = '';
+	}
+
+
+	modal.addEventListener('click', function (e) {
+		if (e.target === modal || e.target.getAttribute('data-close') === '') {
+			closeModal();
 		}
+	});
 
-		function closeModal() {
-			modal.classList.remove('show');
-			document.body.style.overflow = '';
+	document.addEventListener('keydown', function (e) {
+		if (e.code === 'Escape') {
+			closeModal();
 		}
+	});
 
-		modalCloseBtn.addEventListener('click', closeModal);
+	// let modalTimeOutId = setTimeout(function () {
+	// 	openModal();
+	// }, 5000);
 
-		modal.addEventListener('click', function (e) {
-			if (e.target === modal) {
-				closeModal();
-			}
-		});
-
-		document.addEventListener('keydown', function (e) {
-			if (e.code === 'Escape') {
-				closeModal();
-			}
-		});
-
-		// let modalTimeOutId = setTimeout(function () {
-		// 	openModal();
-		// }, 5000);
-
-		function showModalByScroll() {
-			if (window.pageYOffset + document.documentElement.clientHeight === document.documentElement.scrollHeight) {
-				openModal();
-				window.removeEventListener('scroll', showModalByScroll);
-			}
+	function showModalByScroll() {
+		if (window.pageYOffset + document.documentElement.clientHeight === document.documentElement.scrollHeight) {
+			openModal();
+			window.removeEventListener('scroll', showModalByScroll);
 		}
+	}
 
-		// window.addEventListener('scroll', showModalByScroll);
-	};
-	modal();
+	// window.addEventListener('scroll', showModalByScroll);
 
 	class Card {
 		constructor(title, imgPath, alt, content, price, parrent, ...classes) {
@@ -218,8 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		failure: "Что-то пошло не так"
 	};
 
-	function postData(form){
-		form.addEventListener('submit', function (e){
+	function postData(form) {
+		form.addEventListener('submit', function (e) {
 			e.preventDefault();
 
 			const request = new XMLHttpRequest();
@@ -236,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			const object = {};
 
-			formData.forEach(function(value, key) {
+			formData.forEach(function (value, key) {
 				object[key] = value;
 			});
 
@@ -244,13 +239,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			request.send(json);
 
-			request.addEventListener('load', function (){
-				if(request.status === 200){
-					statusMessage.textContent = message.success;
-					console.log(request.response);
+			request.addEventListener('load', function () {
+				if (request.status === 200) {
+					showThanksModal(message.success);
 					form.reset();
-				}else{
-					statusMessage.textContent = message.failure;
+				} else {
+					showThanksModal(message.failure);
 				}
 
 				setTimeout(() => {
@@ -263,4 +257,27 @@ document.addEventListener('DOMContentLoaded', () => {
 	forms.forEach(function (item) {
 		postData(item);
 	});
+
+	function showThanksModal(message) {
+		const prevModalDialog = document.querySelector('.modal__dialog');
+		prevModalDialog.classList.add('hide');
+		openModal();
+
+		const thanksModal = document.createElement('div');
+		thanksModal.classList.add('modal__dialog');
+		thanksModal.innerHTML = `
+			<div class="modal__content">
+				<div class="modal__close" data-close>x</div>
+				<div class="modal__title">${message}</div>
+			</div>
+		`;
+		document.querySelector('.modal').append(thanksModal);
+
+		setTimeout(function () {
+			thanksModal.remove();
+			prevModalDialog.classList.add('show');
+			prevModalDialog.classList.remove('hide');
+			closeModal();
+		}, 4000);
+	}
 });
