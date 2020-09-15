@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+	//tabs
 	let tabs = function () {
 		const tabcontent = document.querySelectorAll('.tabcontent');
 		const tabheaderItem = document.querySelectorAll('.tabheader__item');
@@ -39,331 +40,45 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 	tabs();
 
-	let timer = function () {
-		const deadline = '2020-08-20';
+	//timer
+	const deadline = '2020-11-17';
 
-		const setTimer = function (deadline) {
-			const newDate = new Date();
-			const timeRemaining = Date.parse(deadline) - Date.parse(newDate);
-			const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-			const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
-			const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
-			const seconds = Math.floor((timeRemaining / 1000) % 60);
+	function getTimeRemaining(endtime) {
+		const total = Date.parse(endtime) - Date.parse(new Date());
+		const days = Math.floor(total / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((total / (1000 * 60 * 60) % 24));
+		const minutes = Math.floor((total / (1000 * 60) % 60));
+		const seconds = Math.floor((total / (1000) % 60));
 
-			if (timeRemaining <= 0) {
-				clearInterval(timerInterval);
-			}
-
-			return {
-				timeRemaining: timeRemaining,
-				days: days,
-				hours: hours,
-				minutes: minutes,
-				seconds: seconds
-			};
-		};
-
-		function addZero(num) {
-			if (num >= 0 && num < 10) {
-				return `0${num}`;
-			} else {
-				return num;
-			}
-		}
-
-		function updateTimer() {
-			const days = document.querySelector('#days');
-			const hours = document.querySelector('#hours');
-			const minutes = document.querySelector('#minutes');
-			const seconds = document.querySelector('#seconds');
-
-			const getData = setTimer(deadline);
-
-			days.innerHTML = addZero(getData.days) + '';
-			hours.innerHTML = addZero(getData.hours) + '';
-			minutes.innerHTML = addZero(getData.minutes) + '';
-			seconds.innerHTML = addZero(getData.seconds) + '';
-		}
-
-		updateTimer();
-
-		let timerInterval = setInterval(function () {
-			updateTimer();
-		}, 1000);
-
-	};
-	timer();
-
-	const modal = document.querySelector('.modal');
-	const modalOpenBtn = document.querySelectorAll('[data-modal-open]');
-
-	modalOpenBtn.forEach((btn => {
-		btn.addEventListener('click', openModal);
-	}));
-
-	function openModal() {
-		modal.classList.add('show');
-		document.body.style.overflow = 'hidden';
-		// clearInterval(modalTimeOutId);
+		return { total, days, hours, minutes, seconds };
 	}
 
-	function closeModal() {
-		modal.classList.remove('show');
-		document.body.style.overflow = '';
-	}
-
-
-	modal.addEventListener('click', function (e) {
-		if (e.target === modal || e.target.getAttribute('data-close') === '') {
-			closeModal();
-		}
-	});
-
-	document.addEventListener('keydown', function (e) {
-		if (e.code === 'Escape') {
-			closeModal();
-		}
-	});
-
-	// let modalTimeOutId = setTimeout(function () {
-	// 	openModal();
-	// }, 5000);
-
-	// function showModalByScroll() {
-	// 	if (window.pageYOffset + document.documentElement.clientHeight === document.documentElement.scrollHeight) {
-	// 		openModal();
-	// 		window.removeEventListener('scroll', showModalByScroll);
-	// 	}
-	// }
-
-	// window.addEventListener('scroll', showModalByScroll);
-
-	class Card {
-		constructor(imgPath, alt, title, content, price, parrent, ...classes) {
-			this.title = title;
-			this.imgPath = imgPath;
-			this.content = content;
-			this.price = price;
-			this.priceConvertor = 27;
-			this.alt = alt;
-			this.exchange();
-			this.parrent = document.querySelector(parrent);
-			this.classes = classes;
-		}
-
-		exchange() {
-			this.price = this.price * this.priceConvertor;
-		}
-
-		render() {
-			const div = document.createElement('div');
-			if (this.classes.length === 0) {
-				this.classes = 'menu__item';
-				div.classList.add(this.classes);
-			} else {
-				this.classes.forEach(className => div.classList.add(className));
-			}
-			div.innerHTML = `
-				<img src="${this.imgPath}" alt="vegy">
-				<h3 class="menu__item-subtitle">${this.title}</h3>
-				<div class="menu__item-descr">${this.content}</div>
-				<div class="menu__item-divider"></div>
-				<div class="menu__item-price">
-					<div class="menu__item-cost">Цена:</div>
-					<div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-				</div>
-			`;
-
-			this.parrent.prepend(div);
+	function addZero(num) {
+		if(num > 0 && num < 10){
+			return `0${num}`;
+		}else{
+			return num;
 		}
 	}
 
-	// const getResources = async function (url) {
-	// 	const res = await fetch(url);
-	// 	if (!res.ok) {
-	// 		throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-	// 	}
-	// 	return await res.json();
-	// };
-	// getResources('http://localhost:3000/menu')
-	// 	.then(data => {
-	// 		data.forEach(({img, altimg, title, descr, price}) => {
-	// 			new Card(img, altimg, title, descr, price, '.menu__field .container').render();
-	// 		});
-	// 	});
+	function setClock(selector, endtime){
+		const timer = document.querySelector('.timer');
+		const days = timer.querySelector('#days');
+		const hours = timer.querySelector('#hours');
+		const minutes = timer.querySelector('#minutes');
+		const seconds = timer.querySelector('#seconds');
+		const timerInterval = setInterval(updateClock, 1000);
 
-	const forms = document.querySelectorAll('form');
+		updateClock();
 
-	const message = {
-		loading: "Загрузка",
-		success: "Спасибо, скоро мы с вами свяжимся",
-		failure: "Что-то пошло не так"
-	};
-
-	function postData(form) {
-		form.addEventListener('submit', function (e) {
-			e.preventDefault();
-
-			const request = new XMLHttpRequest();
-			request.open('POST', 'server.php');
-
-			const statusMessage = document.createElement('div');
-			statusMessage.classList.add('status');
-			statusMessage.textContent = message.loading;
-			form.append(statusMessage);
-
-			request.setRequestHeader('Content-type', 'application/json');
-
-			const formData = new FormData(form);
-
-			const object = {};
-
-			formData.forEach(function (value, key) {
-				object[key] = value;
-			});
-
-			const json = JSON.stringify(object);
-
-			request.send(json);
-
-			request.addEventListener('load', function () {
-				if (request.status === 200) {
-					showThanksModal(message.success);
-					form.reset();
-				} else {
-					showThanksModal(message.failure);
-				}
-
-				setTimeout(() => {
-					statusMessage.remove();
-				}, 2000);
-			});
-		});
-	}
-
-	// function postData(form) {
-	// 	form.addEventListener('submit', function (e) {
-	// 		e.preventDefault();
-	//
-	//
-	// 		const statusMessage = document.createElement('div');
-	// 		statusMessage.classList.add('status');
-	// 		statusMessage.textContent = message.loading;
-	// 		form.append(statusMessage);
-	//
-	// 		const formData = new FormData(form);
-	//
-	// 		fetch('server.php', {
-	// 			method: "POST",
-	// 			// headers: {
-	// 			// 	'Content-type': 'application/json'
-	// 			// },
-	// 			body: {
-	// 				formData
-	// 			}
-	// 		}).then((data) => {
-	// 			return data.text();
-	// 		}).then((data) => {
-	// 			showThanksModal(message.success);
-	// 		}).catch(() => {
-	// 			showThanksModal(message.failure);
-	// 		}).finally(() => {
-	// 			form.reset();
-	// 		});
-	//
-	// 		// request.addEventListener('load', function () {
-	// 		// 	if (request.status === 200) {
-	// 		// 		showThanksModal(message.success);
-	// 		// 		form.reset();
-	// 		// 	} else {
-	// 		// 		showThanksModal(message.failure);
-	// 		// 	}
-	// 		//
-	// 		// 	setTimeout(() => {
-	// 		// 		statusMessage.remove();
-	// 		// 	}, 2000);
-	// 		// });
-	// 	});
-	// }
-
-	forms.forEach(function (item) {
-		postData(item);
-	});
-
-	function showThanksModal(message) {
-		const prevModalDialog = document.querySelector('.modal__dialog');
-		prevModalDialog.classList.add('hide');
-		openModal();
-
-		const thanksModal = document.createElement('div');
-		thanksModal.classList.add('modal__dialog');
-		thanksModal.innerHTML = `
-			<div class="modal__content">
-				<div class="modal__close" data-close>x</div>
-				<div class="modal__title">${message}</div>
-			</div>
-		`;
-		document.querySelector('.modal').append(thanksModal);
-
-		setTimeout(function () {
-			thanksModal.remove();
-			prevModalDialog.classList.add('show');
-			prevModalDialog.classList.remove('hide');
-			closeModal();
-		}, 4000);
-	}
-
-	// fetch('http://localhost:3000/menu')
-	// 	.then(data => data.json());
-	// // .then(result => console.dir(result));
-
-	//slider
-
-	const slides = document.querySelectorAll('.offer__slide');
-	const buttonPrev = document.querySelector('.offer__slider-prev');
-	const buttonNext = document.querySelector('.offer__slider-next');
-	const total = document.querySelector('#total');
-	const current = document.querySelector('#current');
-	let slideIndex = 1;
-
-	showSlides(slideIndex);
-
-	if (slides.length < 10) {
-		total.textContent = `0${slides.length - 1}`;
-	}else{
-		total.textContent = `${slides.length - 1}`;
-	}
-
-	function showSlides(n) {
-		if (n > slides.length - 1) {
-			slideIndex = 1;
-		}
-		if (n < 1) {
-			slideIndex = slides.length - 1;
-		}
-
-		slides.forEach(slide => {
-			slide.style.display = 'none';
-		});
-
-		slides[slideIndex-1].style.display = 'block';
-
-		if (slides.length < 10) {
-			current.textContent = `0${slideIndex}`;
-		} else {
-			current.textContent = slideIndex;
+		function updateClock(){
+			const time = getTimeRemaining(endtime);
+			days.innerHTML = addZero(time.days);
+			hours.innerHTML = addZero(time.hours);
+			minutes.innerHTML = addZero(time.minutes);
+			seconds.innerHTML = addZero(time.seconds);
 		}
 	}
 
-	function plusSlides(n){
-		showSlides(slideIndex += n);
-	}
-
-	buttonPrev.addEventListener('click', function (e) {
-		plusSlides(-1);
-	});
-
-	buttonNext.addEventListener('click', function (e) {
-		plusSlides(1);
-	});
+	setClock('.timer', deadline);
 });
