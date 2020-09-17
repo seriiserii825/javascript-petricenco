@@ -1,23 +1,12 @@
-window.addEventListener('DOMContentLoaded', function () {
-	const box = document.querySelector('.box');
-	const btn = document.querySelector('.box-button');
+'use strict';
+const item = {
+	'some': 4,
+	'for': 4
+};
+const two = {
+	'first': 8,
+	'seocnd': 9,
+	...item
+};
 
-	const boxFullHeight = box.scrollHeight;
-	const boxHeight = box.offsetHeight;
-	const boxScrollTop = box.scrollTop;
-	const boxOffsetTop = box.offsetTop;
-
-	// btn.addEventListener('click', function (){
-	// 	if(box.classList.contains('opened')){
-	// 		box.style.height = boxHeight + 'px';
-	// 		box.classList.remove('opened');
-	// 	}else{
-	// 		box.style.height = boxFullHeight + 'px';
-	// 		box.classList.add('opened');
-	// 	}
-	// });
-
-	btn.addEventListener('click', function () {
-		document.documentElement.scrollTop = boxOffsetTop;
-	});
-});
+console.log(two);
