@@ -1,11 +1,23 @@
-const now = new Date();
+window.addEventListener('DOMContentLoaded', function () {
+	const box = document.querySelector('.box');
+	const btn = document.querySelector('.box-button');
 
-for(let i = 0; i < 1000000; i++){
-	let some = i;
-}
+	const boxFullHeight = box.scrollHeight;
+	const boxHeight = box.offsetHeight;
+	const boxScrollTop = box.scrollTop;
+	const boxOffsetTop = box.offsetTop;
 
-const end = new Date();
+	// btn.addEventListener('click', function (){
+	// 	if(box.classList.contains('opened')){
+	// 		box.style.height = boxHeight + 'px';
+	// 		box.classList.remove('opened');
+	// 	}else{
+	// 		box.style.height = boxFullHeight + 'px';
+	// 		box.classList.add('opened');
+	// 	}
+	// });
 
-// console.log(`loop worked ${end - now} milliseconds`);
-
-console.log(Math.floor(4 % 60));
+	btn.addEventListener('click', function () {
+		document.documentElement.scrollTop = boxOffsetTop;
+	});
+});

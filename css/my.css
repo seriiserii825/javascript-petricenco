@@ -1,3 +1,12 @@
 body {
     background-color: #ccc;
 }
+* {
+    box-sizing: border-box;
+}
+.box {
+    margin: 100px auto;
+    width: 400px;
+    height: 305px;
+    overflow-y: scroll;
+}
