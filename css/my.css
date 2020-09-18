@@ -2,3 +2,6 @@ body {
 color: black;
 background-color: #ccc;
 }
+* {
+	box-sizing: border-box;
+}
