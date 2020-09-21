@@ -202,4 +202,49 @@ document.addEventListener('DOMContentLoaded', () => {
 		'menu__item',
 		'big'
 	).render();
+
+	//formData
+	// const form = document.querySelector('form');
+	// form.addEventListener('submit', (e) => {
+	// 	e.preventDefault();
+	// 	const formData = new FormData(form);
+	// 	fetch('server.php', {
+	// 		method: "POST",
+	// 		body: formData
+	// 	}).then(data => data.text())
+	// 		.then((data) => {
+	// 			console.log(data);
+	// 		}).catch(() => {
+	// 		console.log('error');
+	// 	}).finally(() => {
+	// 		form.reset();
+	// 	});
+	// });
+
+	//json
+	const form = document.querySelector('form');
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const formData = new FormData(form);
+
+		const object = {};
+		formData.forEach((value, key) => {
+			object[key] = value;
+		});
+		const jsonO = JSON.stringify(object);
+		fetch('server.php', {
+			method: "POST",
+			headers: {
+				'Content-type': 'application/json'
+			},
+			body: jsonO
+		}).then(data => data.text())
+			.then((data) => {
+				console.log(data);
+			}).catch(() => {
+			console.log('error');
+		}).finally(() => {
+			form.reset();
+		});
+	});
 });
