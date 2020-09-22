@@ -202,4 +202,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		'menu__item',
 		'big'
 	).render();
+
+	// fetch('db.json')
+	// 	.then(data => data.json())
+	// 	.then(data => {
+	// 		const menu = data;
+	// 	});
+
+	fetch('http://localhost:5050/menu')
+		.then(data => data.json())
+		.then(data => {
+			console.log(data);
+		});
 });
